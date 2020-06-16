@@ -1,0 +1,71 @@
+.signup-form,
+.login-form {
+    width: 300px;
+    margin: 0 auto;
+    font-family: Tahoma, Geneva, sans-serif;
+}
+.signup-form h1,
+.login-form h1 {
+    text-align: center;
+    color: #4d4d4d;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+}
+.signup-form input[type="password"],
+.signup-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dddddd;
+    margin-bottom: 15px;
+    box-sizing:border-box;
+}
+.signup-form input[type="submit"],
+.login-form input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #535b63;
+    border: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+body {
+    font-family: Tahoma, Geneva, sans-serif;
+    margin: auto;
+}
+
+.main-content {
+    text-align: center !important;
+}
+
+nav {
+    background: #4d4d4d;
+    padding: 1em;
+}
+
+li {
+    display: inline;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 22px;
+}
+
+nav a {
+    color: greenyellow !important;
+}
+
+a:hover {
+    background-color:white;
+    color: black !important;
+  }
+
+footer {
+    font-family: Tahoma, Geneva, sans-serif;
+    background-color: white;
+    padding: 0.5em;
+    text-align: center;
+    color: #778899
+}

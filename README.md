@@ -2,7 +2,7 @@
 
 A web app with care instructions for plants.
 
-## Tools
+## Tools:
 
 Backend:
 
@@ -24,11 +24,11 @@ Libraries:
 
 1. Run the following command to download packages:
 
-     $ npm install
+ $ npm install
 
 2. Choose a knex script to run
 
-     $ npm run createdb
+ $ npm run createdb
     (To see possible commands: $ npm run)
 
 3. Based on templates fill in in config folder:
@@ -38,11 +38,11 @@ Libraries:
 
 4. To start the application:
 
-     $ node app.js
+ $ node app.js
 
 5. Open the browser on:
 
-     localhost:3000
+ localhost:3000
 
 6. Log in:
 

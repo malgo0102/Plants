@@ -5,15 +5,21 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
+// Setup Objection and Knex
+
+const { Model } = require('objection');
+const Knex = require('knex');
+const knexfile = require('./knexfile.js');
+
+const knex = Knex(knexfile.development);
+
+Model.knex(knex);
 
 // Setup socket
 
 // Setup session
 
-
 // Setup rate limiter
-
-// Setup Objection and Knex
 
 // Import routes
 

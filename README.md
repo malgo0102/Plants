@@ -31,9 +31,8 @@ Libraries:
      $ npm run createdb
     (To see possible commands: $ npm run)
 
-3. Based on templates fill in:
-    
-    In config folder:
+3. Based on templates fill in in config folder:
+
     - config.json
     - dbCredentials.js
 

@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/malgo0102/Plants#readme",
   "dependencies": {
+    "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "knex": "^0.21.1",
     "mysql": "^2.18.1",

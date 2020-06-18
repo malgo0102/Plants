@@ -1,6 +1,11 @@
 exports.seed = function(knex) {
-    return knex('users').del()
+
+    return knex('plants').del()
+    .then(function() {
+        return knex('categories').del();
+    })
     .then(function() {
         return knex('plants').del();
-    });
+    })
+
 }

@@ -8,7 +8,7 @@ Backend:
 
 - Express
 - MySQL database 
-- ORM / ODM
+- ORM
 
 Frontend:
 

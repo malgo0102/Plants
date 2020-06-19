@@ -8,7 +8,7 @@ class Category extends Model {
     static relationMappings = {
         plants: {
             relation: Model.HasManyRelation,
-            modelClass: Elective,
+            modelClass: Plant,
             join: {
                 from: 'categories.id',
                 to: 'plants.categoryId'

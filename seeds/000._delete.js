@@ -8,4 +8,4 @@ exports.seed = function(knex) {
         return knex('plants').del();
     })
 
-}
+};

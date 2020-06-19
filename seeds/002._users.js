@@ -6,3 +6,4 @@ exports.seed = function(knex) {
     ]);
 
 };
+

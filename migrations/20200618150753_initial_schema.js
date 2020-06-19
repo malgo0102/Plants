@@ -11,7 +11,7 @@ exports.up = function(knex) {
     })
     .createTable('categories', table => {
         table.increments('id'),
-        table.string('category').unique().notNullable()
+        table.string('category').unique().notNullable() 
     })
     .createTable('plants', table => {
         table.increments('id'),
@@ -40,3 +40,4 @@ exports.down = function(knex) {
         .dropTableIfExists('users');
   
 };
+

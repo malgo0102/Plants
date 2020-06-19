@@ -5,7 +5,8 @@ exports.seed = function(knex) {
         return knex('categories').del();
     })
     .then(function() {
-        return knex('plants').del();
+        return knex('plants').del(); 
     })
 
 };
+

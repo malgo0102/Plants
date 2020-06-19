@@ -1,7 +1,6 @@
 exports.seed = function(knex) {
     
     return knex('users').select().then(users => {
-        console.log(users);
         return knex('plants').insert([
             { name: 'Haworthia Pentagona', nickname: 'Lucky bamboo', watering: '', humidity: '', fertalizing: '', temperature: '', lighting: '', soil: '', pruning: '', picture: 'https://queengenetics.dk/media/dxffgl1u/haworthia-pentagona-10-5-cm.jpg?anchor=center&mode=crop&width=800&height=800&metadata=false&rnd=132146607729670000', category_id: 2, user_id: users.find(user => user.username == 'admin').id },
             { name: 'Monstera Deliciosa', nickname: 'Split-Leaf Philodendron', watering: 'Water when soil surface dries.', humidity: '', fertalizing: 'Fertilize every 1 to 2 months.', temperature: '', lighting: 'Medium to bright light.', soil: 'Rich, well-draining soil.', pruning: '', picture: 'https://www.ikea.com/sg/en/images/products/monstera-deliciosa-potted-plant__0554567_PE659828_S5.JPG', category_id: 3, user_id: users.find(user => user.username == 'admin').id },

@@ -33,6 +33,11 @@
     color: #ffffff;
 }
 
+img {
+    width: 400px;
+    height: 400px;
+}
+
 body {
     font-family: Tahoma, Geneva, sans-serif;
     margin: auto;

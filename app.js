@@ -22,8 +22,10 @@ Model.knex(knex);
 // Setup rate limiter
 
 // Import routes
+const plantRoute = require('./routes/plants');
 
 // Setup routes
+app.use(plantRoute);
 
 // Render views
 const fs = require('fs');
@@ -32,11 +34,15 @@ const navPage = fs.readFileSync('./public/fragments/nav.html', 'utf8');
 const footerPage = fs.readFileSync('./public/fragments/footer.html', 'utf8');
 
 const homePage = fs.readFileSync('./public/home/home.html', 'utf8');
+const plantsPage = fs.readFileSync('./public/plants/plants.html', 'utf8');
 
 app.get('/', (req, res) => {
     return res.send(navPage + homePage + footerPage);
 });
 
+// app.get('/plants', (req, res) => {
+//     return res.send(navPage + plantsPage + footerPage);
+// });
 
 const PORT = 3000;
 

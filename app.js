@@ -31,7 +31,7 @@ const fs = require('fs');
 const navPage = fs.readFileSync('./public/fragments/nav.html', 'utf8');
 const footerPage = fs.readFileSync('./public/fragments/footer.html', 'utf8');
 
-const homePage = fs.readFileSync('./public/home.html', 'utf8');
+const homePage = fs.readFileSync('./public/home/home.html', 'utf8');
 
 app.get('/', (req, res) => {
     return res.send(navPage + homePage + footerPage);

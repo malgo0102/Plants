@@ -16,10 +16,14 @@ class Plant extends Model {
             }
         },
         user: {
-            relation: Model.HasManyRelation,
+            relation: Model.ManyToManyRelation,
             modelClass: User,
             join: {
-                from: 'plants.userId',
+                from: 'plants.id',
+                through: {
+                    from: "users_plants.plantId",
+                    to: "users_plants.userId"
+                },
                 to: 'users.id'
             }
         }

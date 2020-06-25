@@ -6,17 +6,21 @@ class User extends Model {
     static tableName = 'users';
 
     static relationMappings = {
-        plants: {
-            relation: Model.HasManyRelation,
+        plant: {
+            relation: Model.ManyToManyRelation,
             modelClass: Plant,
             join: {
                 from: 'users.id',
-                to: 'plants.userId'
+                through: {
+                    from: "users_plants.userId",
+                    to: "users_plants.plantId"
+                },
+                to: 'plants.id'
             }
-
         }
     }
 
 }
 
 module.exports = User;
+

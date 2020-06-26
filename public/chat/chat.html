@@ -1,0 +1,28 @@
+<link rel="stylesheet" type="text/css" href="./css/chat.css">
+
+<div class="chat-popup" id="myForm">
+    <form class="form-container"></form>
+    <!-- <form action="/action_page.php" class="form-container"> -->
+        <h1>Chat</h1>
+        <label for="msg"><b>Message</b></label>
+        <div id="conversation"></div>
+        <input class="form-control" id="message" placeholder="Type message.." name="msg" required></input>
+        <button type="submit" class="btn">Send</button>
+        <button type="button" class="btncancel" onclick="closeForm()">Close</button>
+    </form>
+</div>
+
+<script src="socket.io/socket.io.js"></script>
+<script>
+    const socket = io.connect("localhost:3000");
+
+    $('#submit').click(() => {
+        const message = $('#message').val();
+        $('#message').val('');
+        socket.emit('a client wrote this', { message });
+    });
+
+    socket.on('A client said', data => {
+        $('#conversation').prepend(`<div>${data.message}</div>`);
+    });
+</script>

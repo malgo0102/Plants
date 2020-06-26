@@ -1,4 +1,4 @@
-exports.seed = function(knex) {
+exports.seed = function (knex) {
 
     return knex('plants').insert([
         { name: 'Haworthia Pentagona', nickname: 'Lucky bamboo', watering: '', humidity: '', fertalizing: '', temperature: '', lighting: '', soil: '', pruning: '', picture: 'https://queengenetics.dk/media/dxffgl1u/haworthia-pentagona-10-5-cm.jpg?anchor=center&mode=crop&width=800&height=800&metadata=false&rnd=132146607729670000', category_id: 2 },
@@ -20,7 +20,7 @@ exports.seed = function(knex) {
         { name: 'Ficus Pumila', nickname: 'Creeping Fig', watering: 'Keep soil evenly moist.', humidity: '', fertalizing: 'Fertilize every 1 to 2 months.', temperature: '', lighting: 'Medium to bright light.', soil: 'Rich, well-draining soil.', pruning: '', picture: 'https://www.healthyhouseplants.com/images/creeping-fig-plant.jpg', category_id: 1 },
         { name: 'Calathea zebrina', nickname: 'Peacock Plant', watering: 'Keep soil evenly moist.', humidity: '', fertalizing: 'Fertilize monthly.', temperature: '', lighting: 'Medium to bright light.', soil: 'Rich, well-draining soil.', pruning: '', picture: '', category_id: 5 },
         { name: 'Clusia', nickname: '', watering: '', humidity: '', fertalizing: '', temperature: '', lighting: '', soil: '', pruning: '', picture: 'https://www.ikea.com/dk/da/images/products/clusia-potted-plant__0653977_PE708206_S5.JPG?f=xxxl', category_id: 2 },
-        { name: 'Hypoestes phyllostachya', nickname: 'Polka-Dot Plant', watering: 'Water when soil surface dries.', humidity: '', fertalizing: 'Fertilize every 2 months.', temperature: '', lighting: 'Medium to bright light.', soil: 'Rich, well-draining soil.', pruning: '', picture: 'https://www.healthyhouseplants.com/images/polka-dot-plant.jpg', category_id: 5 }, 
+        { name: 'Hypoestes phyllostachya', nickname: 'Polka-Dot Plant', watering: 'Water when soil surface dries.', humidity: '', fertalizing: 'Fertilize every 2 months.', temperature: '', lighting: 'Medium to bright light.', soil: 'Rich, well-draining soil.', pruning: '', picture: 'https://www.healthyhouseplants.com/images/polka-dot-plant.jpg', category_id: 5 },
     ]);
 
 };

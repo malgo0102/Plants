@@ -40,9 +40,9 @@ app.get('/', (req, res) => {
     return res.send(navPage + homePage + footerPage);
 });
 
-// app.get('/plants', (req, res) => {
-//     return res.send(navPage + plantsPage + footerPage);
-// });
+app.get('/plants', (req, res) => {
+    return res.send(navPage + plantsPage + footerPage);
+});
 
 const PORT = 3000;
 

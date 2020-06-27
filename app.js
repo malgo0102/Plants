@@ -6,7 +6,6 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
 // Setup Objection and Knex
-
 const { Model } = require('objection');
 const Knex = require('knex');
 const knexfile = require('./knexfile.js');
@@ -15,7 +14,7 @@ const knex = Knex(knexfile.development);
 
 Model.knex(knex);
 
-// Setup socket
+// Setup Socket
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 
@@ -30,15 +29,20 @@ io.on('connection', socket => {
 
 });
 
-// Setup session
+// Setup Session
+const session = require('express-session');
+
+// You need to copy the config.template.json file and fill out your own secret
+const config = require('./config/config.json');
+
+app.use(session({
+    secret: config.sessionSecret,
+    resave: false,
+    saveUninitialized: true
+}));
 
 // Setup rate limiter
 
-// Import routes
-const plantRoute = require('./routes/plants');
-
-// Setup routes
-app.use(plantRoute);
 
 // Render views
 const fs = require('fs');
@@ -48,15 +52,18 @@ const footerPage = fs.readFileSync('./public/fragments/footer.html', 'utf8');
 const chatPopup = fs.readFileSync('./public/chat/chat.html', 'utf8');
 
 const homePage = fs.readFileSync('./public/home/home.html', 'utf8');
-const plantsPage = fs.readFileSync('./public/plants/plants.html', 'utf8');
 
 app.get('/', (req, res) => {
     return res.send(navPage + homePage + chatPopup + footerPage);
 });
 
-app.get('/plants', (req, res) => {
-    return res.send(navPage + plantsPage + footerPage);
-});
+// Import routes
+const authRoute = require('./routes/auth.js');
+const plantRoute = require('./routes/plants.js');
+
+// Setup routes
+app.use(authRoute);
+app.use(plantRoute);
 
 const PORT = 3000;
 

@@ -1,4 +1,5 @@
-<link rel="stylesheet" type="text/css" href="./css/chat.css">
+<link rel="stylesheet" type="text/css" href="/css/chat.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 
 <div class="chat-popup" id="myForm">
     <form class="form-container"></form>
@@ -7,12 +8,11 @@
         <label for="msg"><b>Message</b></label>
         <div id="conversation"></div>
         <input class="form-control" id="message" placeholder="Type message.." name="msg" required></input>
-        <button type="submit" class="btn">Send</button>
+        <button id="submit" type="submit" class="btn">Send</button>
         <button type="button" class="btncancel" onclick="closeForm()">Close</button>
     </form>
 </div>
 
-<script src="socket.io/socket.io.js"></script>
 <script>
     const socket = io.connect("localhost:3000");
 

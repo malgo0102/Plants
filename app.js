@@ -67,7 +67,7 @@ app.use(plantRoute);
 
 const PORT = 3000;
 
-app.listen(PORT, (error) => {
+server.listen(PORT, (error) => {
     if (error) {
         console.log(error);
     }

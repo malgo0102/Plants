@@ -32,7 +32,7 @@ io.on('connection', socket => {
 // Setup Session
 const session = require('express-session');
 
-// You need to copy the config.template.json file and fill out your own secret
+// Copy the config.template.json file and fill out your own secret
 const config = require('./config/config.json');
 
 app.use(session({

@@ -1,28 +1,22 @@
 <link rel="stylesheet" type="text/css" href="/css/chat.css">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="/chat/chat.js"></script>
 
-<div class="chat-popup" id="myForm">
-    <form class="form-container"></form>
-    <!-- <form action="/action_page.php" class="form-container"> -->
-        <h1>Chat</h1>
-        <label for="msg"><b>Message</b></label>
-        <div id="conversation"></div>
-        <input class="form-control" id="message" placeholder="Type message.." name="msg" required></input>
-        <button id="submit" type="submit" class="btn">Send</button>
-        <button type="button" class="btncancel" onclick="closeForm()">Close</button>
-    </form>
+<div class="chat">
+    <button id="btn-open" type="button" class="btn btn-secondary" onclick="openForm()">Chat</button>
+
+    <div class="chat-popup" id="myForm">
+        <div class="form-container">
+            <div class="conversation-container">
+                <div id="conversation"></div>
+            </div>
+
+            <label for="msg"><b>Message</b></label>
+            <input class="form-control" id="message" placeholder="Type message..." name="msg" required></input>
+
+            <button id="btn-submit" type="submit" class="btn btn-success">Send</button>
+            <button id="btn-close" class="btn btn-danger" onclick="closeForm()">Close</button>
+        </div>
+    </div>
 </div>
-
-<script>
-    const socket = io.connect("localhost:3000");
-
-    $('#submit').click(() => {
-        const message = $('#message').val();
-        $('#message').val('');
-        socket.emit('a client wrote this', { message });
-    });
-
-    socket.on('A client said', data => {
-        $('#conversation').prepend(`<div>${data.message}</div>`);
-    });
-</script>

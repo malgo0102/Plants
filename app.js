@@ -59,12 +59,15 @@ app.get('/', (req, res) => {
 
 // Import routes
 const authRoute = require('./routes/auth.js');
-const plantRoute = require('./routes/plants.js');
+const plantsRoute = require('./routes/plants.js');
+const usersRoute = require('./routes/users.js');
 
 // Setup routes
 app.use(authRoute);
-app.use(plantRoute);
+app.use(plantsRoute);
+app.use(usersRoute);
 
+// Start server
 const PORT = 3000;
 
 server.listen(PORT, (error) => {

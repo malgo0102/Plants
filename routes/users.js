@@ -9,27 +9,36 @@ const navPage = fs.readFileSync('./public/fragments/nav.html', 'utf8');
 const footerPage = fs.readFileSync('./public/fragments/footer.html', 'utf8');
 const chatPopup = fs.readFileSync('./public/chat/chat.html', 'utf8');
 
-const usersPage = fs.readFileSync('./public/users/user.html', 'utf8');
+const userPage = fs.readFileSync('./public/user/user.html', 'utf8');
 
-router.get('/users', (req, res) => {
-    return res.send(navPage + usersPage + chatPopup + footerPage);
+router.get('/user', async (req, res) => {
+    return res.send(navPage + userPage + chatPopup + footerPage);
 });
 
-router.get('/users/:username', async (req, res) => {
-
-};
-
-router.get('/users/data', async (req, res) => {
+router.get('/users/data/:id', async (req, res) => {
         if (req.session.loggedin) {
             //res.send('Welcome back, ' + req.session.username + '!');
-            const allUsersWithPlants = await User.query().select('username').withGraphFetched('plants');
+            const userWithPlants = await User.query().select('username').withGraphFetched('plants').where('id', req.params.id);
 
-            return res.send(allUsersWithPlants);
+            return res.send(userWithPlants);
             
         } else {
             res.send('Please login to view this page!');
         }
         res.end();
+});
+
+router.get('/users/data', async (req, res) => {
+    if (req.session.loggedin) {
+        //res.send('Welcome back, ' + req.session.username + '!');
+        const allUserWithPlants = await User.query().select('username').withGraphFetched('plants');
+
+        return res.send(allUsersWithPlants);
+        
+    } else {
+        res.send('Please login to view this page!');
+    }
+    res.end();
 });
 
 router.get('/setsessionvalue', (req, res) => {

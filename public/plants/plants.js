@@ -11,14 +11,14 @@ $(document).ready(function () {
                 columns: [
                     { data: 'name' },
                     { data: 'nickname' },
-                    { data: 'watering' },
-                    { data: 'humidity' },
-                    { data: 'fertalizing' },
-                    { data: 'temperature' },
-                    { data: 'lighting' },
-                    { data: 'soil' },
-                    { data: 'pruning' },
-                    { data: 'picture' },
+                    // { data: 'watering' },
+                    // { data: 'humidity' },
+                    // { data: 'fertalizing' },
+                    // { data: 'temperature' },
+                    // { data: 'lighting' },
+                    // { data: 'soil' },
+                    // { data: 'pruning' },
+                    // { data: 'picture' },
                     { data: 'category' },
                 ]
             });

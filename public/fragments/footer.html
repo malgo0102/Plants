@@ -1,12 +1,14 @@
 </div>
-    
-<footer>
-    <p id="copyright">Copyright (C)</p>
+
+<footer class="footer">
+    <p id="copyright">Copyright (C) Plants <span id="copyright-year"></span>
+    Logo created by <a href="https://www.designevo.com/logo-maker/" title="Free Online Logo Maker">DesignEvo logo maker</a></p>
 </footer>
 <script>
     const currentYear = new Date().getFullYear();
 
-    $("#copyright").text("Copyright (C) Plants " + currentYear);
+    $("#copyright-year").text(currentYear);
 </script>
 </body>
+
 </html>

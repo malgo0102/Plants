@@ -33,9 +33,14 @@
     color: #ffffff;
 }
 
+#logo{
+    width: 30px;
+    height: 30px;
+}
+
 img {
-    width: 400px;
-    height: 400px;
+    width: 250px;
+    height: 250px;
 }
 
 body {
@@ -45,32 +50,22 @@ body {
 
 .main-content {
     text-align: center !important;
+    margin: 1em;
 }
 
 nav {
     background: #4d4d4d;
-    padding: 1em;
-}
-
-li {
-    display: inline;
-    font-family: Tahoma, Geneva, sans-serif;
-    font-size: 22px;
-}
-
-nav a {
-    color: greenyellow !important;
-}
-
-a:hover {
-    background-color:white;
-    color: black !important;
-  }
-
-footer {
-    font-family: Tahoma, Geneva, sans-serif;
-    background-color: white;
     padding: 0.5em;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: small;
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #778899;
+    background-color: white;
     text-align: center;
-    color: #778899
 }

@@ -31,3 +31,10 @@
   background: #f1f1f1;
   resize: none;
 }
+
+#btn-open{
+  position: fixed;
+  bottom: 12px;
+  right: 90px;
+  z-index: 9;
+}

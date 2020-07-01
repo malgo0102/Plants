@@ -9,7 +9,10 @@ $(document).ready(function () {
                 data: x.response,
 
                 columns: [
-                    { data: 'name' },
+                    { render: function (data, type, row) {
+                        return '<a href="/plant/'+ row.id +'">' + row.name + '</a>'
+                    }},
+                    //{ data: 'name' },
                     { data: 'nickname' },
                     // { data: 'watering' },
                     // { data: 'humidity' },
@@ -25,4 +28,3 @@ $(document).ready(function () {
         }
     })
 });
-

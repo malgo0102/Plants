@@ -1,6 +1,6 @@
 # Plants
 
-A *Node.js* web app with care instructions for plants.
+A **Node.js** web app with care instructions for plants.
 
 ## Tools:
 

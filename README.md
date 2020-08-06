@@ -6,15 +6,11 @@ A web app with care instructions for plants.
 
 Backend:
 
-- Express
-- MySQL database 
-- ORM
+- Express, MySQL, ORM
 
 Frontend:
 
-- HTML
-- Ajax/Fetch
-- Sockets
+- HTML, Ajax, Sockets
 
 Libraries:
 

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const Plant = require('../models/Plant.js');
+const User = require('../models/User.js');
 
 const fs = require('fs');
 
@@ -14,6 +15,24 @@ const plantPage = fs.readFileSync('./public/plant/plant.html', 'utf8');
 
 router.get('/plants', (req, res) => {
     return res.send(navPage + plantsPage + chatPopup + footerPage);
+});
+
+router.post('/plants/:id', async (req, res) => {
+    if(req.session.loggedin){
+        try {
+            const userid = req.session.userid;
+            const plantid = req.params.id;
+        
+            // https://vincit.github.io/objection.js/api/query-builder/mutate-methods.html#relate
+            const usersNewPlant = await User.relatedQuery('plants').for(userid).relate(plantid); 
+
+            return res.send({ response: usersNewPlant });
+        } catch (error) {
+            return res.send({ response: "Error in database" + error });
+        }
+    } else {
+        return res.send({});
+    }
 });
 
 router.get('/plants/data', async (req, res) => {
@@ -31,8 +50,9 @@ router.get('/plant/:id', (req, res) => {
 
 router.get('/plant/data/:id', async (req, res) => {
     try {
-        const plant = await Plant.query().select('plants.*').where('id', req.params.id);
-        return res.send({ response: plant });
+        const plant = await Plant.query().select('plants.*', 'categories.category').join('categories', 'plants.category_id', '=', 'categories.id').where('plants.id', req.params.id);
+        // extract json object from the array (response from db is an array with where clause = 1 match or 0)
+        return res.send({ response: plant[0] });
     } catch (error) {
         return res.send({ response: "Error in database " + error });
     }

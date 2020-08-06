@@ -12,42 +12,35 @@ const chatPopup = fs.readFileSync('./public/chat/chat.html', 'utf8');
 const userPage = fs.readFileSync('./public/user/user.html', 'utf8');
 
 router.get('/user', async (req, res) => {
-    return res.send(navPage + userPage + chatPopup + footerPage);
+    return res.redirect('/user/' + req.session.userid);
+
 });
 
-router.get('/users/data/:id', async (req, res) => {
-        if (req.session.loggedin) {
-            //res.send('Welcome back, ' + req.session.username + '!');
-            const userWithPlants = await User.query().select('username').withGraphFetched('plants').where('id', req.params.id);
+router.get('/user/:id', async (req, res) => {
+    if (req.session.loggedin) {
+        return res.send(navPage + userPage + chatPopup + footerPage);
 
-            return res.send(userWithPlants);
+    } else {
+        req.session.errormessage = "Please login to view user page!";
+        return res.redirect('/login');
+    }
+    //res.end();
+    
+});
+
+router.get('/user/data/:id', async (req, res) => {
+        if (req.session.loggedin) {
+            const userWithPlants = await User.query().select('username').where('users.id', req.params.id).withGraphFetched('plants');
+            console.log(userWithPlants[0].username );
+            console.log(userWithPlants[0]);
+            return res.send({ response: userWithPlants[0] });
             
         } else {
-            res.send('Please login to view this page!');
+            req.session.errormessage = "Please login to view user page!";
+            return res.redirect('/login');
         }
-        res.end();
-});
+        //res.end();
 
-router.get('/users/data', async (req, res) => {
-    if (req.session.loggedin) {
-        //res.send('Welcome back, ' + req.session.username + '!');
-        const allUserWithPlants = await User.query().select('username').withGraphFetched('plants');
-
-        return res.send(allUsersWithPlants);
-        
-    } else {
-        res.send('Please login to view this page!');
-    }
-    res.end();
-});
-
-router.get('/setsessionvalue', (req, res) => {
-    req.session.payingAttention = true;
-    return res.send({ response: "OK" });
-});
-
-router.get('/getsessionvalue', (req, res) => {
-    return res.send({ response: req.session.payingAttention });
 });
 
 module.exports = router;

@@ -1,8 +1,9 @@
 exports.seed = function(knex) {
     
     return knex('users').insert([ 
-        { username: 'admin', password:'password' },
-        { username: 'user1', password:'password' },
+        // password: password
+        { username: 'admin', password:'$2b$12$ZVNv/S0MGuApEHpqxOSQT.0tcGqI1SY7eSIe6UwjLTPBITv8otRW6' },
+        { username: 'user1', password:'$2b$12$ZVNv/S0MGuApEHpqxOSQT.0tcGqI1SY7eSIe6UwjLTPBITv8otRW6' },
     ]);
 
 };

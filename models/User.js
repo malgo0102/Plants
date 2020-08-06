@@ -6,7 +6,7 @@ class User extends Model {
     static tableName = 'users';
 
     static relationMappings = {
-        plant: {
+        plants: {
             relation: Model.ManyToManyRelation,
             modelClass: Plant,
             join: {

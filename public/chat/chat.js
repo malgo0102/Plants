@@ -3,13 +3,20 @@ $(document).ready(function () {
 
     $('#btn-submit').click(() => {
         const message = $('#message').val();
+        var username = "Anonymous";
+        if(mysession.loggedin) {
+            username = mysession.username;
+        }
         $('#message').val('');
-        socket.emit('a client wrote this', { message });
+        socket.emit('a client wrote this', { message, username });
     });
 
     socket.on('A client said', data => {
-        $('#conversation').prepend(`<div>${data.message}</div>`);
+        $('#conversation').append(`<div>${data.username}: ${data.message}</div>`);
     });
+    // socket.on('A server said', data => {
+    //     $('#conversation').append(`<div>${data.message}</div>`)
+    // });
 });
 
 function openForm() {

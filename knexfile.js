@@ -6,11 +6,11 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      host: credentials.host,
+      host: credentials.host, // AWS
       database: credentials.database,
       user: credentials.user,
       password: credentials.password,
-      port: 3306
+      port: 3306 // AWS
     },
     ...knexSnakeCaseMappers()
   }

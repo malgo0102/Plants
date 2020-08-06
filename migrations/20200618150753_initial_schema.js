@@ -19,7 +19,7 @@ exports.up = function(knex) {
         table.string('nickname');
         table.string('watering');
         table.string('humidity');
-        table.string('fertalizing');
+        table.string('fertilizing');
         table.string('temperature');
         table.string('lighting');
         table.string('soil');

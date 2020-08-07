@@ -22,7 +22,6 @@ router.post('/plants/:id', async (req, res) => {
         try {
             const userid = req.session.userid;
             const plantid = req.params.id;
-        
             // https://vincit.github.io/objection.js/api/query-builder/mutate-methods.html#relate
             const usersNewPlant = await User.relatedQuery('plants').for(userid).relate(plantid); 
 
@@ -31,7 +30,7 @@ router.post('/plants/:id', async (req, res) => {
             return res.send({ response: "Error in database" + error });
         }
     } else {
-        return res.send({});
+        return res.end();
     }
 });
 
@@ -51,7 +50,6 @@ router.get('/plant/:id', (req, res) => {
 router.get('/plant/data/:id', async (req, res) => {
     try {
         const plant = await Plant.query().select('plants.*', 'categories.category').join('categories', 'plants.category_id', '=', 'categories.id').where('plants.id', req.params.id);
-        // extract json object from the array (response from db is an array with where clause = 1 match or 0)
         return res.send({ response: plant[0] });
     } catch (error) {
         return res.send({ response: "Error in database " + error });

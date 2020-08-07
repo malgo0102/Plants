@@ -26,7 +26,6 @@ router.get('/signup', (req, res) => {
 router.post('/login', (req, res) => {
     // Get the data from the request
     const { username, password } = req.body;
-    //console.log("Username is: " + username + " and password: " + password);
     // Validate the data 
     if (username && password) {
         // Check if user exists and get their password
@@ -34,11 +33,9 @@ router.post('/login', (req, res) => {
             User.query().where('username', username).select('id', 'password').then(foundUser => {
                 if (foundUser.length < 1) {
                     req.session.errormessage = "User not found";
-                    //return res.status(400).send({ response: "User not found" });
                     return res.send(navPage + loginPage + chatPopup + footerPage);
                 } else {
                     bcrypt.compare(password, foundUser[0].password).then((result) => {
-                        //console.log("post /login - your password:", password)
 
                         if (result) {
                             // Send a response based on the comparison handle session
@@ -56,12 +53,10 @@ router.post('/login', (req, res) => {
             });
         } catch (error) {
             req.session.errormessage = "Something went wrong with the DB";
-            //return res.status(500).send({ response: "Something went wrong with the DB" });
             return res.send(navPage + loginPage + chatPopup + footerPage);
         }
     } else {
         req.session.errormessage = "Username or password missing";
-        //return res.status(400).send({ response: "Username or password missing" });
         return res.send(navPage + loginPage + chatPopup + footerPage);
     }
 });

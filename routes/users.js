@@ -13,33 +13,26 @@ const userPage = fs.readFileSync('./public/user/user.html', 'utf8');
 
 router.get('/user', async (req, res) => {
     return res.redirect('/user/' + req.session.userid);
-
 });
 
 router.get('/user/:id', async (req, res) => {
     if (req.session.loggedin) {
         return res.send(navPage + userPage + chatPopup + footerPage);
-
     } else {
         req.session.errormessage = "Please login to view user page!";
         return res.redirect('/login');
     }
-    //res.end();
     
 });
 
 router.get('/user/data/:id', async (req, res) => {
         if (req.session.loggedin) {
             const userWithPlants = await User.query().select('username').where('users.id', req.params.id).withGraphFetched('plants');
-            console.log(userWithPlants[0].username );
-            console.log(userWithPlants[0]);
             return res.send({ response: userWithPlants[0] });
-            
         } else {
             req.session.errormessage = "Please login to view user page!";
             return res.redirect('/login');
         }
-        //res.end();
 
 });
 
